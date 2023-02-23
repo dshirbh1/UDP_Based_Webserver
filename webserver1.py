@@ -7,12 +7,8 @@ import sys
 # Prepare a sever socket
 serverSocket = socket(AF_INET, SOCK_STREAM)
 
-### YOUR CODE HERE ###
 serverPort = 59354
-# if serverport is in user; unbind and 
-# then bind
-# ; if not bind
-serverAddress = "149.125.123.98"
+serverAddress = "149.125.40.195"
 serverSocket.bind((serverAddress,serverPort))
 serverSocket.listen(1)
 
@@ -26,7 +22,9 @@ while True:
         filename = message.split()[1]
 
         #Adding a break event to come out of while loop
-        
+        if filename == "/exit":
+            break
+
         f = open(filename[1:])
         outputdata = f.read()
 
