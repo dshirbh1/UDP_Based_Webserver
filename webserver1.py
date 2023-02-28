@@ -8,7 +8,7 @@ import sys
 serverSocket = socket(AF_INET, SOCK_STREAM)
 
 serverPort = 59354
-serverAddress = "149.125.40.195"
+serverAddress = ""
 serverSocket.bind((serverAddress,serverPort))
 serverSocket.listen(1)
 
@@ -20,6 +20,7 @@ while True:
     try:
         message = connectionSocket.recv(1024).decode()
         filename = message.split()[1]
+        print('Serving to:', addr[0], ':', addr[1])
 
         #Adding a break event to come out of while loop
         if filename == "/exit":
