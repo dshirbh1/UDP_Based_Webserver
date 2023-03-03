@@ -53,7 +53,7 @@ if __name__ == '__main__':
     serverPort = 50788
     serverAddress = "128.226.114.202"
     serverSocket.bind((serverAddress,serverPort))
-    serverSocket.listen(2)
+    serverSocket.listen(5)
 
     while True:
         # Establish the connection
