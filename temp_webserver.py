@@ -14,18 +14,22 @@ def run(connectionSocket):
         try:
             message = connectionSocket.recv(2048).decode()
             filename = message.split()[1]
+            print('Serving to:', addr[0], ':', addr[1])
+
+            #Adding a break event to come out of while loop
             if filename == "/exit":
                 break
 
-            # Open the file in binary mode
-            with open(filename[1:], 'rb') as f:
-                content = f.read()
-            
+            f = open(filename[1:])
+            outputdata = f.read()
+
             # Send one HTTP header line into socket
             connectionSocket.send("HTTP/1.1 200 OK\r\n\r\n".encode())
-            
+
             # Send the content of the requested file into socket
-            connectionSocket.sendall(content)
+            for i in range(0, len(outputdata)):
+                connectionSocket.send(outputdata[i].encode())
+            connectionSocket.send("\r\n".encode())
             
             # lock released on exit
             thread_lock.release()
@@ -47,7 +51,7 @@ if __name__ == '__main__':
     serverSocket = socket(AF_INET, SOCK_STREAM)
 
     serverPort = 50788
-    serverAddress = ""
+    serverAddress = "128.226.114.202"
     serverSocket.bind((serverAddress,serverPort))
     serverSocket.listen(2)
 
