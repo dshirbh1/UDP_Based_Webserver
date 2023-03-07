@@ -7,8 +7,8 @@ import sys
 # Prepare a sever socket
 serverSocket = socket(AF_INET, SOCK_STREAM)
 
-serverPort = 5000
-serverAddress = "76.38.177.129"
+serverPort = 5001
+serverAddress = "149.125.158.177"
 serverSocket.bind((serverAddress,serverPort))
 serverSocket.listen(1)
 

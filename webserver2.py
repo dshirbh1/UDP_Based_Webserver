@@ -14,29 +14,40 @@ def run(connectionSocket):
         try:
             message = connectionSocket.recv(2048).decode()
             filename = message.split()[1]
-            if filename == "/exit":
-                break
+            
+            if filename.endswith("pdf"):
+                reader = PdfReader(filename[1:], 'rb')
+            
+                number_of_pages = len(reader.pages) ##len(reader.pages)
 
-            reader = PdfReader(filename[1:], 'rb')
-            number_of_pages = len(reader.pages) ##len(reader.pages)
+                # Send one HTTP header line into socket
+                connectionSocket.send("HTTP/1.1 200 OK\r\n\r\n".encode())
+                current_page = 0
+                while current_page < number_of_pages:
+                    # getting a specific page from the pdf file
+                    page = reader.pages[current_page]
+                    
+                    # extracting text from page
+                    outputdata = page.extract_text()
 
-            # Send one HTTP header line into socket
-            connectionSocket.send("HTTP/1.1 200 OK\r\n\r\n".encode())
-            current_page = 0
-            while current_page < number_of_pages:
-                # getting a specific page from the pdf file
-                page = reader.pages[current_page]
-                
-                # extracting text from page
-                outputdata = page.extract_text()
+                    # Send the content of the requested file into socket
+                    for i in range(0, len(outputdata)):
+                        connectionSocket.send(outputdata[i].encode())
+                    connectionSocket.send("\r\n".encode())
+
+                    current_page += 1
+            if filename.endswith("html"):
+                f = open(filename[1:])
+                outputdata = f.read()
+
+                # Send one HTTP header line into socket
+                connectionSocket.send("HTTP/1.1 200 OK\r\n\r\n".encode())
 
                 # Send the content of the requested file into socket
                 for i in range(0, len(outputdata)):
                     connectionSocket.send(outputdata[i].encode())
                 connectionSocket.send("\r\n".encode())
 
-                current_page += 1
-            
             # lock released on exit
             thread_lock.release()
             break
@@ -56,12 +67,13 @@ if __name__ == '__main__':
     # Prepare a sever socket
     serverSocket = socket(AF_INET, SOCK_STREAM)
 
-    serverPort = 50788
-    serverAddress = "128.226.114.202"
+    serverPort = 5001
+    serverAddress = "149.125.158.177"
     serverSocket.bind((serverAddress,serverPort))
-    serverSocket.listen(5)
+    serverSocket.listen(1)
 
     while True:
+        print('Ready to serve...')
         # Establish the connection
         connectionSocket, addr = serverSocket.accept()
         print('Serving to :', addr[0], ':', addr[1])
