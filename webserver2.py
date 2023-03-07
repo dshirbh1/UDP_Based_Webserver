@@ -48,7 +48,7 @@ def run(connectionSocket):
             # lock released on exit
             thread_lock.release()
             break
-        
+
     # Close client socket
     connectionSocket.close()
 
@@ -56,10 +56,10 @@ if __name__ == '__main__':
     # Prepare a sever socket
     serverSocket = socket(AF_INET, SOCK_STREAM)
 
-    serverPort = 59354
-    serverAddress = ""
+    serverPort = 50788
+    serverAddress = "128.226.114.202"
     serverSocket.bind((serverAddress,serverPort))
-    serverSocket.listen(2)
+    serverSocket.listen(5)
 
     while True:
         # Establish the connection
