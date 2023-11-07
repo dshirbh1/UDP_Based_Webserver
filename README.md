@@ -1,6 +1,34 @@
-# Binghamton University, Spring 2023
+# Web Server Project
+## Overview
+Welcome to the "Web Server" project! This project involves creating a simple web server in Python that can handle HTTP requests and serve web pages. In this README, we will provide an overview of the project, its implementation, and how to use it.
 
-## CS428/528 Project-1: Web Server
+## Project Description
+The "Web Server" project consists of two parts:
+
+# Part 1: Single-Threaded Web Server
+In this part, you'll develop a basic web server that can handle one HTTP request at a time.
+The server will accept and parse incoming HTTP requests, retrieve requested files from the server's file system, and send HTTP response messages.
+# Part 2: Multi-Threaded Web Server
+Building upon Part 1, you'll implement a multi-threaded web server that can serve multiple requests simultaneously.
+Threading will be used to create separate threads for handling each request, ensuring concurrent processing.
+
+## How to Use
+Follow these steps to set up and use the web server:
+1. Python environment with required libraries.
+2. Clone this repository to your local machine:
+3. Navigate to the project directory:
+4. Running the Web Server
+  Part 1: Single-Threaded Web Server
+  Ensure you have the provided HTML file, "home.html," in the same directory as your server source code.
+  Run the web server program:
+  Determine the IP address of the host running the server and the port number you used (e.g., "http://128.238.251.26:28000/home.html").
+  Open a web browser and access the server by providing the URL:
+  To test "404 Not Found" handling, try requesting a file that is not present on the server.
+
+  Part 2: Multi-Threaded Web Server
+  Run the multi-threaded web server
+  To test the server's multi-threading capabilities, consider requesting a large file, such as a PDF, from multiple browser tabs simultaneously.
+
 
 ### SUMMARY
 
@@ -27,15 +55,3 @@ Error 404: If file is not present at server, it will show "File not found" error
 3. Access this server by using this URL in the browser: http://<IP_ADDRESS_HERE>:<PORT_NUMBER_HERE>/home.html for webserver1.py #
 4. 3. Access this server by using this URL in the browser: http://<IP_ADDRESS_HERE>:<PORT_NUMBER_HERE>/Project1-WebServer.pdf for webserver2.py
 5. For multiple requests, you can use bash file calling the same URL multiple times. #
-
-### SUBMISSION
-
-I have done this assignment completely on my own. I have not copied it, nor have I given my solution to anyone else. I understand that if I am involved in plagiarism or cheating I will have to sign an official form that I have cheated and that this form will be stored in my official university record. I also understand that I will receive a grade of "0" for the involved assignment and my grade will be reduced by one level (e.g., from "A" to "A-" or from "B+" to "B") for my first offense, and that I will receive a grade of "F" for the course for any additional offense of any kind.
-
-By signing my name below and submitting the project, I confirm the above statement is true and that I have followed the course guidelines and policies.
-
-Submission date: 03-03-2023
-
-Team member 1 name: Devashri Pramodrao Shirbhate
-
-Team member 2 name: Jay Balaram Sankhe
