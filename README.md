@@ -5,10 +5,10 @@ Welcome to the "Web Server" project! This project involves creating a simple web
 ## Project Description
 The "Web Server" project consists of two parts:
 
-# Part 1: Single-Threaded Web Server
+### Part 1: Single-Threaded Web Server
 In this part, you'll develop a basic web server that can handle one HTTP request at a time.
 The server will accept and parse incoming HTTP requests, retrieve requested files from the server's file system, and send HTTP response messages.
-# Part 2: Multi-Threaded Web Server
+### Part 2: Multi-Threaded Web Server
 Building upon Part 1, you'll implement a multi-threaded web server that can serve multiple requests simultaneously.
 Threading will be used to create separate threads for handling each request, ensuring concurrent processing.
 
@@ -18,14 +18,14 @@ Follow these steps to set up and use the web server:
 2. Clone this repository to your local machine:
 3. Navigate to the project directory:
 4. Running the Web Server
-  Part 1: Single-Threaded Web Server
+  #### Part 1: Single-Threaded Web Server
   Ensure you have the provided HTML file, "home.html," in the same directory as your server source code.
   Run the web server program:
   Determine the IP address of the host running the server and the port number you used (e.g., "http://128.238.251.26:28000/home.html").
   Open a web browser and access the server by providing the URL:
   To test "404 Not Found" handling, try requesting a file that is not present on the server.
 
-  Part 2: Multi-Threaded Web Server
+  #### Part 2: Multi-Threaded Web Server
   Run the multi-threaded web server
   To test the server's multi-threading capabilities, consider requesting a large file, such as a PDF, from multiple browser tabs simultaneously.
 
